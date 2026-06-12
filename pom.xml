@@ -22,7 +22,11 @@
     </modules>
 
     <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <java.version>21</java.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <avro.version>1.11.3</avro.version>
         <kafka-clients.version>3.6.1</kafka-clients.version>
@@ -30,6 +34,8 @@
         <grpc-spring-boot-starter.version>3.1.0.RELEASE</grpc-spring-boot-starter.version>
         <protobuf.version>3.23.4</protobuf.version>
         <grpc.version>1.63.0</grpc.version>
+        <org.mapstruct.version>1.6.3</org.mapstruct.version>
+        <lombok.version>1.18.46</lombok.version>
 
         <!--       Plugins       -->
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
