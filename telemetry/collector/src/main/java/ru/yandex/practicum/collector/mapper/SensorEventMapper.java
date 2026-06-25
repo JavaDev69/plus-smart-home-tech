@@ -2,27 +2,16 @@ package ru.yandex.practicum.collector.mapper;
 
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
-import org.springframework.stereotype.Component;
-import ru.yandex.practicum.collector.dto.sensor.ClimateSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.LightSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.MotionSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.SensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.SwitchSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.TemperatureSensorEvent;
-import ru.yandex.practicum.kafka.telemetry.event.ClimateSensorAvro;
-import ru.yandex.practicum.kafka.telemetry.event.LightSensorAvro;
-import ru.yandex.practicum.kafka.telemetry.event.MotionSensorAvro;
-import ru.yandex.practicum.kafka.telemetry.event.SensorEventAvro;
-import ru.yandex.practicum.kafka.telemetry.event.SwitchSensorAvro;
-import ru.yandex.practicum.kafka.telemetry.event.TemperatureSensorAvro;
+import ru.yandex.practicum.collector.dto.sensor.*;
+import ru.yandex.practicum.kafka.telemetry.event.*;
 
 @Mapper(
-        componentModel = "spring",
+        componentModel = MappingConstants.ComponentModel.SPRING,
         builder = @Builder(disableBuilder = true),
         unmappedTargetPolicy = ReportingPolicy.ERROR
 )
-@Component
 public interface SensorEventMapper {
     default SensorEventAvro toAvro(SensorEvent event) {
         if (event == null) {

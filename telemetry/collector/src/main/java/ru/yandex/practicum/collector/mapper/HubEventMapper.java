@@ -4,27 +4,15 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
-import org.springframework.stereotype.Component;
-import ru.yandex.practicum.collector.dto.hub.DeviceAddedEvent;
-import ru.yandex.practicum.collector.dto.hub.DeviceRemovedEvent;
-import ru.yandex.practicum.collector.dto.hub.HubEvent;
-import ru.yandex.practicum.collector.dto.hub.ScenarioAddedEvent;
-import ru.yandex.practicum.collector.dto.hub.ScenarioRemovedEvent;
+import ru.yandex.practicum.collector.dto.hub.*;
 import ru.yandex.practicum.collector.dto.scenario.DeviceAction;
 import ru.yandex.practicum.collector.dto.scenario.ScenarioCondition;
-import ru.yandex.practicum.kafka.telemetry.event.DeviceActionAvro;
-import ru.yandex.practicum.kafka.telemetry.event.DeviceAddedEventAvro;
-import ru.yandex.practicum.kafka.telemetry.event.DeviceRemovedEventAvro;
-import ru.yandex.practicum.kafka.telemetry.event.HubEventAvro;
-import ru.yandex.practicum.kafka.telemetry.event.ScenarioAddedEventAvro;
-import ru.yandex.practicum.kafka.telemetry.event.ScenarioConditionAvro;
-import ru.yandex.practicum.kafka.telemetry.event.ScenarioRemovedEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.*;
 
 @Mapper(
         componentModel = MappingConstants.ComponentModel.SPRING,
         unmappedTargetPolicy = ReportingPolicy.ERROR
 )
-@Component
 public interface HubEventMapper {
     default HubEventAvro toAvro(HubEvent event) {
         if (event == null) {
