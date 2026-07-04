@@ -21,12 +21,12 @@ public class EventGrpcController extends CollectorControllerGrpc.CollectorContro
     private final Map<SensorEventProto.PayloadCase, SensorEventHandler> sensorEventHandlers;
     private final Map<HubEventProto.PayloadCase, HubEventHandler> hubEventHandlers;
 
-    public EventGrpcController(Set<SensorEventHandler> handlers, Set<HubEventHandler> HubEventHandlers) {
+    public EventGrpcController(Set<SensorEventHandler> handlers, Set<HubEventHandler> hubEventHandlers) {
         this.sensorEventHandlers = handlers.stream()
                 .collect(Collectors.toMap(
                         SensorEventHandler::getMessageType,
                         Function.identity()));
-        this.hubEventHandlers = HubEventHandlers.stream()
+        this.hubEventHandlers = hubEventHandlers.stream()
                 .collect(Collectors.toMap(
                         HubEventHandler::getEventType,
                         Function.identity()));
