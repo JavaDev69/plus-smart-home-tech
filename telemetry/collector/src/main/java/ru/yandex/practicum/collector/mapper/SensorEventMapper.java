@@ -4,7 +4,7 @@ import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
-import ru.yandex.practicum.collector.dto.sensor.*;
+import ru.yandex.practicum.dto.sensor.*;
 import ru.yandex.practicum.kafka.telemetry.event.*;
 
 @Mapper(

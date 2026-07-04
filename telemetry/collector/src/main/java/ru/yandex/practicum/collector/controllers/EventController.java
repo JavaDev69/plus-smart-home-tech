@@ -3,14 +3,10 @@ package ru.yandex.practicum.collector.controllers;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import ru.yandex.practicum.collector.dto.hub.HubEvent;
-import ru.yandex.practicum.collector.dto.sensor.SensorEvent;
+import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.collector.service.EventService;
+import ru.yandex.practicum.dto.hub.HubEvent;
+import ru.yandex.practicum.dto.sensor.SensorEvent;
 
 @RequiredArgsConstructor
 @RestController

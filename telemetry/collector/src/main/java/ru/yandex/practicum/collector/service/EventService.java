@@ -4,11 +4,11 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import ru.yandex.practicum.collector.dto.hub.HubEvent;
-import ru.yandex.practicum.collector.dto.sensor.SensorEvent;
 import ru.yandex.practicum.collector.kafka.KafkaAvroProducer;
 import ru.yandex.practicum.collector.mapper.HubEventMapper;
 import ru.yandex.practicum.collector.mapper.SensorEventMapper;
+import ru.yandex.practicum.dto.hub.HubEvent;
+import ru.yandex.practicum.dto.sensor.SensorEvent;
 
 @RequiredArgsConstructor
 @Service

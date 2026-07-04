@@ -8,21 +8,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.yandex.practicum.collector.dto.DeviceType;
-import ru.yandex.practicum.collector.dto.hub.DeviceAddedEvent;
-import ru.yandex.practicum.collector.dto.hub.DeviceRemovedEvent;
-import ru.yandex.practicum.collector.dto.hub.HubEvent;
-import ru.yandex.practicum.collector.dto.hub.ScenarioAddedEvent;
-import ru.yandex.practicum.collector.dto.hub.ScenarioRemovedEvent;
-import ru.yandex.practicum.collector.dto.sensor.ClimateSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.LightSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.MotionSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.SensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.SwitchSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.TemperatureSensorEvent;
 import ru.yandex.practicum.collector.kafka.KafkaAvroProducer;
 import ru.yandex.practicum.collector.mapper.HubEventMapper;
 import ru.yandex.practicum.collector.mapper.SensorEventMapper;
+import ru.yandex.practicum.dto.DeviceType;
+import ru.yandex.practicum.dto.hub.*;
+import ru.yandex.practicum.dto.sensor.*;
 import ru.yandex.practicum.kafka.telemetry.event.HubEventAvro;
 import ru.yandex.practicum.kafka.telemetry.event.SensorEventAvro;
 
@@ -30,10 +21,7 @@ import java.time.Instant;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoInteractions;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class EventServiceTest {

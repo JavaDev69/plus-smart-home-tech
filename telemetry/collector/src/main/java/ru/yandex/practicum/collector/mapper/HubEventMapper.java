@@ -4,9 +4,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
-import ru.yandex.practicum.collector.dto.hub.*;
-import ru.yandex.practicum.collector.dto.scenario.DeviceAction;
-import ru.yandex.practicum.collector.dto.scenario.ScenarioCondition;
+import ru.yandex.practicum.dto.hub.*;
+import ru.yandex.practicum.dto.scenario.DeviceAction;
+import ru.yandex.practicum.dto.scenario.ScenarioCondition;
 import ru.yandex.practicum.kafka.telemetry.event.*;
 
 @Mapper(
