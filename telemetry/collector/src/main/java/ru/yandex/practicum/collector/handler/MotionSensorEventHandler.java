@@ -3,9 +3,9 @@ package ru.yandex.practicum.collector.handler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
-import ru.yandex.practicum.collector.dto.sensor.MotionSensorEvent;
 import ru.yandex.practicum.collector.mapper.EventProtoMapper;
 import ru.yandex.practicum.collector.service.EventService;
+import ru.yandex.practicum.dto.sensor.MotionSensorEvent;
 import ru.yandex.practicum.grpc.telemetry.event.SensorEventProto;
 
 @Log

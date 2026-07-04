@@ -10,26 +10,15 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import ru.yandex.practicum.collector.dto.hub.DeviceAddedEvent;
-import ru.yandex.practicum.collector.dto.hub.DeviceRemovedEvent;
-import ru.yandex.practicum.collector.dto.hub.HubEvent;
-import ru.yandex.practicum.collector.dto.hub.ScenarioAddedEvent;
-import ru.yandex.practicum.collector.dto.hub.ScenarioRemovedEvent;
-import ru.yandex.practicum.collector.dto.sensor.ClimateSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.LightSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.MotionSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.SensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.SwitchSensorEvent;
-import ru.yandex.practicum.collector.dto.sensor.TemperatureSensorEvent;
 import ru.yandex.practicum.collector.service.EventService;
+import ru.yandex.practicum.dto.hub.*;
+import ru.yandex.practicum.dto.sensor.*;
 
 import java.time.Instant;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoInteractions;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

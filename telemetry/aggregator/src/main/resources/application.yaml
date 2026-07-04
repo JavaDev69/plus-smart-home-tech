@@ -28,4 +28,4 @@ aggregator:
         "value.deserializer": ru.yandex.practicum.serialization.SensorEventDeserializer
         "enable-auto-commit": false
       topic: "telemetry.sensors.v1"
-      poll-timeout-ms: 1000
+      poll-timeout-ms: 100
