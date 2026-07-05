@@ -1,14 +1,36 @@
 package ru.yandex.practicum.collector.mapper;
 
-import org.mapstruct.*;
+import org.mapstruct.Builder;
+import org.mapstruct.IterableMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.Named;
+import org.mapstruct.ReportingPolicy;
+import org.mapstruct.ValueMapping;
 import ru.yandex.practicum.dto.DeviceType;
 import ru.yandex.practicum.dto.hub.DeviceAddedEvent;
 import ru.yandex.practicum.dto.hub.DeviceRemovedEvent;
 import ru.yandex.practicum.dto.hub.ScenarioAddedEvent;
 import ru.yandex.practicum.dto.hub.ScenarioRemovedEvent;
-import ru.yandex.practicum.dto.scenario.*;
-import ru.yandex.practicum.dto.sensor.*;
-import ru.yandex.practicum.grpc.telemetry.event.*;
+import ru.yandex.practicum.dto.scenario.DeviceAction;
+import ru.yandex.practicum.dto.scenario.DeviceActionType;
+import ru.yandex.practicum.dto.scenario.ScenarioCondition;
+import ru.yandex.practicum.dto.scenario.ScenarioConditionOperation;
+import ru.yandex.practicum.dto.scenario.ScenarioConditionType;
+import ru.yandex.practicum.dto.sensor.ClimateSensorEvent;
+import ru.yandex.practicum.dto.sensor.LightSensorEvent;
+import ru.yandex.practicum.dto.sensor.MotionSensorEvent;
+import ru.yandex.practicum.dto.sensor.SwitchSensorEvent;
+import ru.yandex.practicum.dto.sensor.TemperatureSensorEvent;
+import ru.yandex.practicum.grpc.telemetry.event.ActionTypeProto;
+import ru.yandex.practicum.grpc.telemetry.event.ConditionOperationProto;
+import ru.yandex.practicum.grpc.telemetry.event.ConditionTypeProto;
+import ru.yandex.practicum.grpc.telemetry.event.DeviceActionProto;
+import ru.yandex.practicum.grpc.telemetry.event.DeviceTypeProto;
+import ru.yandex.practicum.grpc.telemetry.event.HubEventProto;
+import ru.yandex.practicum.grpc.telemetry.event.ScenarioConditionProto;
+import ru.yandex.practicum.grpc.telemetry.event.SensorEventProto;
 
 import java.util.List;
 

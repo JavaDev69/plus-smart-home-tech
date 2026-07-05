@@ -1,6 +1,12 @@
 package ru.yandex.practicum.analyzer.mapper;
 
-import org.mapstruct.*;
+import org.mapstruct.IterableMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.Named;
+import org.mapstruct.ReportingPolicy;
+import org.mapstruct.ValueMapping;
 import ru.yandex.practicum.dto.DeviceType;
 import ru.yandex.practicum.dto.hub.DeviceAddedEvent;
 import ru.yandex.practicum.dto.hub.DeviceRemovedEvent;
@@ -9,7 +15,15 @@ import ru.yandex.practicum.dto.hub.ScenarioRemovedEvent;
 import ru.yandex.practicum.dto.scenario.DeviceAction;
 import ru.yandex.practicum.dto.scenario.ScenarioCondition;
 import ru.yandex.practicum.dto.scenario.ScenarioConditionType;
-import ru.yandex.practicum.kafka.telemetry.event.*;
+import ru.yandex.practicum.kafka.telemetry.event.ConditionTypeAvro;
+import ru.yandex.practicum.kafka.telemetry.event.DeviceActionAvro;
+import ru.yandex.practicum.kafka.telemetry.event.DeviceAddedEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.DeviceRemovedEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.DeviceTypeAvro;
+import ru.yandex.practicum.kafka.telemetry.event.HubEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.ScenarioAddedEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.ScenarioConditionAvro;
+import ru.yandex.practicum.kafka.telemetry.event.ScenarioRemovedEventAvro;
 
 import java.util.List;
 

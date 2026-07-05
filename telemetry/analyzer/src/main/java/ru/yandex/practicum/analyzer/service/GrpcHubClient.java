@@ -24,6 +24,7 @@ public class GrpcHubClient {
         log.debug("Sending action {}", action);
         try {
             DeviceActionRequest actionRequest = mapper.map(action);
+            log.debug("Sending actionRequest {}", actionRequest);
             hubRouterClient.handleDeviceAction(actionRequest);
             log.debug("Action sent");
         } catch (Exception e) {

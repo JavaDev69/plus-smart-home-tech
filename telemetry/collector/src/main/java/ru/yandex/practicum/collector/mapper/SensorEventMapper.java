@@ -4,8 +4,18 @@ import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
-import ru.yandex.practicum.dto.sensor.*;
-import ru.yandex.practicum.kafka.telemetry.event.*;
+import ru.yandex.practicum.dto.sensor.ClimateSensorEvent;
+import ru.yandex.practicum.dto.sensor.LightSensorEvent;
+import ru.yandex.practicum.dto.sensor.MotionSensorEvent;
+import ru.yandex.practicum.dto.sensor.SensorEvent;
+import ru.yandex.practicum.dto.sensor.SwitchSensorEvent;
+import ru.yandex.practicum.dto.sensor.TemperatureSensorEvent;
+import ru.yandex.practicum.kafka.telemetry.event.ClimateSensorAvro;
+import ru.yandex.practicum.kafka.telemetry.event.LightSensorAvro;
+import ru.yandex.practicum.kafka.telemetry.event.MotionSensorAvro;
+import ru.yandex.practicum.kafka.telemetry.event.SensorEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.SwitchSensorAvro;
+import ru.yandex.practicum.kafka.telemetry.event.TemperatureSensorAvro;
 
 @Mapper(
         componentModel = MappingConstants.ComponentModel.SPRING,

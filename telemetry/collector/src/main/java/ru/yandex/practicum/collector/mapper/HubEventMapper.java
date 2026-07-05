@@ -4,10 +4,20 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
-import ru.yandex.practicum.dto.hub.*;
+import ru.yandex.practicum.dto.hub.DeviceAddedEvent;
+import ru.yandex.practicum.dto.hub.DeviceRemovedEvent;
+import ru.yandex.practicum.dto.hub.HubEvent;
+import ru.yandex.practicum.dto.hub.ScenarioAddedEvent;
+import ru.yandex.practicum.dto.hub.ScenarioRemovedEvent;
 import ru.yandex.practicum.dto.scenario.DeviceAction;
 import ru.yandex.practicum.dto.scenario.ScenarioCondition;
-import ru.yandex.practicum.kafka.telemetry.event.*;
+import ru.yandex.practicum.kafka.telemetry.event.DeviceActionAvro;
+import ru.yandex.practicum.kafka.telemetry.event.DeviceAddedEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.DeviceRemovedEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.HubEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.ScenarioAddedEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.ScenarioConditionAvro;
+import ru.yandex.practicum.kafka.telemetry.event.ScenarioRemovedEventAvro;
 
 @Mapper(
         componentModel = MappingConstants.ComponentModel.SPRING,
