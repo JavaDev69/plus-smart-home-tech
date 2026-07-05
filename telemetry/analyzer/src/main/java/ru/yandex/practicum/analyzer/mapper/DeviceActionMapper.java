@@ -1,7 +1,12 @@
 package ru.yandex.practicum.analyzer.mapper;
 
 import com.google.protobuf.Timestamp;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.Named;
+import org.mapstruct.ReportingPolicy;
+import org.mapstruct.ValueMapping;
 import org.springframework.stereotype.Component;
 import ru.yandex.practicum.analyzer.dal.model.ScenarioAction;
 import ru.yandex.practicum.dto.scenario.DeviceActionType;

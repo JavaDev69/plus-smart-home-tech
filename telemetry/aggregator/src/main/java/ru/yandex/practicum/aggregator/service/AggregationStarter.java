@@ -6,12 +6,12 @@ import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.OffsetAndMetadata;
-import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.errors.WakeupException;
 import org.springframework.stereotype.Component;
 import ru.yandex.practicum.aggregator.handler.EventHandler;
+import ru.yandex.practicum.aggregator.kafka.KafkaEventProducer;
 import ru.yandex.practicum.aggregator.properties.ConsumerProperties;
 import ru.yandex.practicum.aggregator.properties.ProducerProperties;
 import ru.yandex.practicum.kafka.telemetry.event.SensorEventAvro;
@@ -30,7 +30,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AggregationStarter {
     private final ProducerProperties producerProperties;
-    private final Producer<String, SensorsSnapshotAvro> producer;
+    private final KafkaEventProducer producer;
     private final EventHandler eventHandler;
     private final ConsumerProperties consumerProperties;
     private final Consumer<String, SensorEventAvro> consumer;
@@ -42,7 +42,7 @@ public class AggregationStarter {
      * формирует снимок их состояния и записывает в кафку.
      */
     public void start() {
-        try {
+        try (producer) {
             Runtime.getRuntime().addShutdownHook(new Thread(consumer::wakeup));
             consumer.subscribe(List.of(consumerProperties.getTopic()));
 
