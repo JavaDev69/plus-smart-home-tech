@@ -1,56 +1,11 @@
 spring:
   application:
     name: analyzer
-  sql:
-    init:
-      mode: always
-  datasource:
-    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/analyzer
-    username: sa
-    password: password
-  jpa:
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-    hibernate:
-      ddl-auto: none
-
-grpc:
-  client:
-    hub-router:
-      address: "static://localhost:59090"
-      enableKeepAlive: true
-      keepAliveWithoutCalls: true
-      negotiationType: plaintext
-
-analyzer:
-  kafka:
-    bootstrap-servers: "localhost:9092"
-    snapshot-consumer:
-      properties:
-        "bootstrap.servers": ${analyzer.kafka.bootstrap-servers}
-        "group.id": "telemetry.analyzer.snapshot"
-        "key.deserializer": org.apache.kafka.common.serialization.StringDeserializer
-        "value.deserializer": ru.yandex.practicum.serialization.SensorsSnapshotDeserializer
-        "enable-auto-commit": false
-      #        "auto.offset.reset": earliest
-      topic: "telemetry.snapshots.v1"
-      poll-timeout-ms: 100
-    hub-event-consumer:
-      properties:
-        "bootstrap.servers": ${analyzer.kafka.bootstrap-servers}
-        "group.id": "telemetry.analyzer.hubs"
-        "key.deserializer": org.apache.kafka.common.serialization.StringDeserializer
-        "value.deserializer": ru.yandex.practicum.serialization.HubEventDeserializer
-        "enable-auto-commit": false
-      topic: "telemetry.hubs.v1"
-      poll-timeout-ms: 100
-
-logging:
-  level:
-    ru.yandex.practicum.analyzer: TRACE
-    org:
-      springframework: ERROR
-      apache.kafka: WARN
+  config:
+    import: configserver:http://localhost:8888
+  cloud:
+    config:
+      fail-fast: true
+      retry:
+        use-random-policy: true
+        max-interval: 6000
