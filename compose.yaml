@@ -44,7 +44,24 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - ./volumes/postgresql:/var/lib/postgresql
+      - ./volumes/postgresql/analyzer:/var/lib/postgresql
+    healthcheck:
+      test: pg_isready -q -d $$POSTGRES_DB -U $$POSTGRES_USER
+      timeout: 5s
+      interval: 5s
+      retries: 10
+
+  store-db:
+    image: 'postgres:18.0'
+    hostname: postgresql
+    environment:
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: store
+    ports:
+      - '5433:5432'
+    #    volumes:
+    #      - ./volumes/postgresql/store:/var/lib/postgresql
     healthcheck:
       test: pg_isready -q -d $$POSTGRES_DB -U $$POSTGRES_USER
       timeout: 5s
