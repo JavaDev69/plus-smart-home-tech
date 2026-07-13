@@ -1,0 +1,56 @@
+package ru.yandex.practicum.shopping.store.dal.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import ru.yandex.practicum.shopping.dto.ProductCategory;
+import ru.yandex.practicum.shopping.dto.ProductState;
+import ru.yandex.practicum.shopping.dto.QuantityState;
+
+import java.math.BigDecimal;
+import java.util.UUID;
+
+/**
+ * @author Andrew Vilkov
+ * @created 11.07.2026 - 19:04
+ * @project plus-smart-home-tech
+ */
+@Getter
+@Setter
+@ToString
+@Table(name = "products")
+@Entity
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Column(nullable = false, unique = true)
+    private String productName;
+
+    @Column(nullable = false)
+    private String description;
+
+    @Column
+    private String imageSrc;
+
+    @Enumerated(EnumType.STRING)
+    QuantityState quantityState;
+
+    @Enumerated(EnumType.STRING)
+    ProductState productState;
+
+    @Enumerated(EnumType.STRING)
+    ProductCategory productCategory;
+
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal price;
+}
