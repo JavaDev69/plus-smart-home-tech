@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: shopping-cart
+  sql:
+    init:
+      mode: always
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/cart
+    username: sa
+    password: password
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+
+
+logging:
+  level:
+    ru.yandex.practicum.shopping.cart: TRACE
+    org.springframework: ERROR
