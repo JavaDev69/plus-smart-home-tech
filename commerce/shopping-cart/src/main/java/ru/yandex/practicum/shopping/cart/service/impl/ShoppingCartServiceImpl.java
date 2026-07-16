@@ -6,9 +6,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.yandex.practicum.shopping.cart.dal.model.ShoppingCart;
 import ru.yandex.practicum.shopping.cart.dal.repository.ShoppingCartRepository;
+import ru.yandex.practicum.shopping.cart.mapper.CartMapper;
 import ru.yandex.practicum.shopping.cart.service.ShoppingCartService;
-import ru.yandex.practicum.shopping.dto.ChangeProductQuantityRequest;
-import ru.yandex.practicum.shopping.dto.ShoppingCartState;
+import ru.yandex.practicum.shopping.client.WarehouseClient;
+import ru.yandex.practicum.shopping.dto.cart.ChangeProductQuantityRequest;
+import ru.yandex.practicum.shopping.dto.cart.ShoppingCartState;
+import ru.yandex.practicum.shopping.dto.warehouse.BookedProductsDto;
 import ru.yandex.practicum.shopping.exception.NoProductsInShoppingCartException;
 
 import java.util.HashMap;
@@ -27,6 +30,8 @@ import java.util.UUID;
 @Transactional(readOnly = true)
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     private final ShoppingCartRepository repository;
+    private final CartMapper mapper;
+    private final WarehouseClient warehouseClient;
 
     @Transactional
     @Override
@@ -58,6 +63,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public ShoppingCart addToShoppingCart(String username, Map<UUID, Long> items) {
         ShoppingCart shoppingCart = getOrCreateCart(username);
         shoppingCart.getProducts().putAll(items);
+
+        BookedProductsDto bookedProductsDto = warehouseClient.check(mapper.map(shoppingCart));
+        log.debug("Booked products from warehouse: {}", bookedProductsDto);
+
         repository.save(shoppingCart);
         return shoppingCart;
     }

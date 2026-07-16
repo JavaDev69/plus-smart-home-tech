@@ -22,3 +22,4 @@ logging:
   level:
     ru.yandex.practicum.shopping.store: TRACE
     org.springframework: ERROR
+    org.zalando.logbook: TRACE

@@ -8,8 +8,8 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.ReportingPolicy;
 import org.springframework.data.domain.Page;
-import ru.yandex.practicum.shopping.dto.PageProductDto;
-import ru.yandex.practicum.shopping.dto.ProductDto;
+import ru.yandex.practicum.shopping.dto.shop.PageProductDto;
+import ru.yandex.practicum.shopping.dto.shop.ProductDto;
 import ru.yandex.practicum.shopping.store.dal.model.Product;
 
 /**
@@ -27,7 +27,7 @@ public interface ProductMapper {
     ProductDto map(Product product);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateProduct(ProductDto updProductDto, @MappingTarget Product targetProduct);
+    void updateProduct(Product updProduct, @MappingTarget Product targetProduct);
 
     PageProductDto map(Page<Product> products);
 

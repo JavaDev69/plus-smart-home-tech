@@ -1,4 +1,4 @@
-package ru.yandex.practicum.shopping.dto;
+package ru.yandex.practicum.shopping.dto.cart;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;

@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: collector
+  config:
+    import: ""
+  cloud:
+    config:
+      enabled: false
+      discovery:
+        enabled: false
+    discovery:
+      enabled: false
+
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: false
+    fetch-registry: false

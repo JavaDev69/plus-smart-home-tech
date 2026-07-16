@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.yandex.practicum.shopping.cart.dal.model.ShoppingCart;
 import ru.yandex.practicum.shopping.cart.mapper.CartMapper;
 import ru.yandex.practicum.shopping.cart.service.ShoppingCartService;
-import ru.yandex.practicum.shopping.dto.ChangeProductQuantityRequest;
-import ru.yandex.practicum.shopping.dto.ShoppingCartDto;
+import ru.yandex.practicum.shopping.dto.cart.ChangeProductQuantityRequest;
+import ru.yandex.practicum.shopping.dto.cart.ShoppingCartDto;
 
 import java.util.List;
 import java.util.Map;
