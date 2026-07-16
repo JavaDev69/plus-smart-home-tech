@@ -2,7 +2,7 @@ package ru.yandex.practicum.shopping.cart.dal.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.yandex.practicum.shopping.cart.dal.model.ShoppingCart;
-import ru.yandex.practicum.shopping.dto.ShoppingCartState;
+import ru.yandex.practicum.shopping.dto.cart.ShoppingCartState;
 
 import java.util.List;
 

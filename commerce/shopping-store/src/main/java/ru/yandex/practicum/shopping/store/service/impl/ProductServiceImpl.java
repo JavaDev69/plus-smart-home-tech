@@ -7,11 +7,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.yandex.practicum.shopping.dto.ProductCategory;
-import ru.yandex.practicum.shopping.dto.ProductState;
-import ru.yandex.practicum.shopping.dto.QuantityState;
+import ru.yandex.practicum.shopping.dto.shop.ProductCategory;
+import ru.yandex.practicum.shopping.dto.shop.ProductState;
+import ru.yandex.practicum.shopping.dto.shop.QuantityState;
 import ru.yandex.practicum.shopping.store.dal.model.Product;
 import ru.yandex.practicum.shopping.store.dal.repository.ProductRepository;
+import ru.yandex.practicum.shopping.store.mapper.ProductMapper;
 import ru.yandex.practicum.shopping.store.service.ProductService;
 
 import java.util.UUID;
@@ -27,6 +28,7 @@ import java.util.UUID;
 @Transactional(readOnly = true)
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository repository;
+    private final ProductMapper mapper;
 
     @Override
     public Page<Product> getProducts(ProductCategory category, Pageable pageable) {
@@ -58,11 +60,11 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     @Override
     public Product update(Product product) {
-        if (!repository.existsById(product.getId())) {
-            throw new NotFoundException("Product with id '%s' not found".formatted(product.getId()));
-        }
-        log.debug("Updating product: '{}'", product);
-        Product updated = repository.save(product);
+        Product targetProduct = repository.findById(product.getId())
+                .orElseThrow(() -> new NotFoundException("Product with id '%s' not found".formatted(product.getId())));
+        log.debug("Updating product: '{}' with: {}", targetProduct, product);
+        mapper.updateProduct(product, targetProduct);
+        Product updated = repository.save(targetProduct);
         log.debug("Updated product: '{}'", updated);
         return updated;
     }

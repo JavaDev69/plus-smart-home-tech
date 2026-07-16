@@ -3,8 +3,8 @@ package ru.yandex.practicum.shopping.store.service;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import ru.yandex.practicum.shopping.dto.ProductCategory;
-import ru.yandex.practicum.shopping.dto.QuantityState;
+import ru.yandex.practicum.shopping.dto.shop.ProductCategory;
+import ru.yandex.practicum.shopping.dto.shop.QuantityState;
 import ru.yandex.practicum.shopping.store.dal.model.Product;
 
 import java.util.UUID;

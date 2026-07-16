@@ -11,9 +11,9 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import ru.yandex.practicum.shopping.dto.ProductCategory;
-import ru.yandex.practicum.shopping.dto.ProductState;
-import ru.yandex.practicum.shopping.dto.QuantityState;
+import ru.yandex.practicum.shopping.dto.shop.ProductCategory;
+import ru.yandex.practicum.shopping.dto.shop.ProductState;
+import ru.yandex.practicum.shopping.dto.shop.QuantityState;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -33,7 +33,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String productName;
 
     @Column(nullable = false)
