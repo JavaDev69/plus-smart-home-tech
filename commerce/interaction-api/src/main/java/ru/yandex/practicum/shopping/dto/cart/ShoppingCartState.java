@@ -1,11 +1,11 @@
-package ru.yandex.practicum.shopping.dto;
+package ru.yandex.practicum.shopping.dto.cart;
 
 /**
  * @author Andrew Vilkov
  * @created 10.07.2026 - 18:48
  * @project plus-smart-home-tech
  */
-public enum ProductState {
+public enum ShoppingCartState {
     ACTIVE,
     DEACTIVATE
 }

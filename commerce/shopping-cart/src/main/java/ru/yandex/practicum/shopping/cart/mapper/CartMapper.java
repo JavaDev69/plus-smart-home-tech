@@ -4,7 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
 import ru.yandex.practicum.shopping.cart.dal.model.ShoppingCart;
-import ru.yandex.practicum.shopping.dto.ShoppingCartDto;
+import ru.yandex.practicum.shopping.dto.cart.ShoppingCartDto;
 
 /**
  * @author Andrew Vilkov

@@ -36,6 +36,7 @@
         <grpc.version>1.63.0</grpc.version>
         <org.mapstruct.version>1.6.3</org.mapstruct.version>
         <lombok.version>1.18.46</lombok.version>
+        <logbook.version>4.0.4</logbook.version>
         <spring-cloud-dependencies.version>2023.0.3</spring-cloud-dependencies.version>
 
         <!--       Plugins       -->

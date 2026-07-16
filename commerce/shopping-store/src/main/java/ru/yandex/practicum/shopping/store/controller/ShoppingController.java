@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.yandex.practicum.shopping.dto.PageProductDto;
-import ru.yandex.practicum.shopping.dto.ProductCategory;
-import ru.yandex.practicum.shopping.dto.ProductDto;
-import ru.yandex.practicum.shopping.dto.SetProductQuantityStateRequest;
+import ru.yandex.practicum.shopping.dto.shop.PageProductDto;
+import ru.yandex.practicum.shopping.dto.shop.ProductCategory;
+import ru.yandex.practicum.shopping.dto.shop.ProductDto;
+import ru.yandex.practicum.shopping.dto.shop.QuantityState;
 import ru.yandex.practicum.shopping.store.dal.model.Product;
 import ru.yandex.practicum.shopping.store.mapper.ProductMapper;
 import ru.yandex.practicum.shopping.store.service.ProductService;
@@ -71,21 +71,20 @@ public class ShoppingController {
         if (updProductDto.productId() == null) {
             throw new ValidationException("productId is null");
         }
-        Product targetProduct = service.getProduct(updProductDto.productId());
 
-        log.debug("Target product found: {}", targetProduct);
-        mapper.updateProduct(updProductDto, targetProduct);
-        log.debug("Updated target product: {}", targetProduct);
-        return mapper.map(service.update(targetProduct));
+        Product product = mapper.map(updProductDto);
+        return mapper.map(service.update(product));
     }
 
     @PostMapping("/quantityState")
-    public boolean setProductState(@Valid SetProductQuantityStateRequest request) {
-        return service.setState(request.productId(), request.quantityState());
+    public boolean setProductState(@RequestParam UUID productId, @RequestParam QuantityState quantityState) {
+        log.debug("Request for set product '{}' quantity state: {}", productId, quantityState);
+        return service.setState(productId, quantityState);
     }
 
     @PostMapping("/removeProductFromStore")
     public boolean remove(@Valid @NotNull @RequestBody UUID productId) {
+        log.debug("Request for remove product from store: {}", productId);
         return service.remove(productId);
     }
 }
