@@ -1,4 +1,4 @@
-package ru.yandex.practicum.shopping.dto;
+package ru.yandex.practicum.shopping.dto.shop;
 
 /**
  * @author Andrew Vilkov

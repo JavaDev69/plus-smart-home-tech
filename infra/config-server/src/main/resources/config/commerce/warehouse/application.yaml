@@ -1,12 +1,12 @@
 spring:
   application:
-    name: shopping-cart
+    name: warehouse
   sql:
     init:
       mode: always
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5434/cart
+    url: jdbc:postgresql://localhost:5435/warehouse
     username: sa
     password: password
   jpa:
@@ -20,6 +20,5 @@ spring:
 
 logging:
   level:
-    ru.yandex.practicum.shopping.cart: TRACE
-    ru.yandex.practicum.shopping.client: TRACE
+    ru.yandex.practicum.warehouse: TRACE
     org.springframework: ERROR
