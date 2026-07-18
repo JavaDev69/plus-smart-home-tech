@@ -26,6 +26,10 @@ public class GlobalExceptionHandler {
             NoSpecifiedProductInWarehouseException ex,
             HttpServletRequest request
     ) {
+        log.warn("NoSpecifiedProductInWarehouseException error while processing request {}",
+                request.getRequestURI(),
+                ex);
+
         return buildResponse(
                 HttpStatus.BAD_REQUEST,
                 ex.getMessage(),
@@ -38,6 +42,10 @@ public class GlobalExceptionHandler {
             SpecifiedProductAlreadyInWarehouseException ex,
             HttpServletRequest request
     ) {
+        log.warn("SpecifiedProductAlreadyInWarehouseException error while processing request {}",
+                request.getRequestURI(),
+                ex);
+
         return buildResponse(
                 HttpStatus.BAD_REQUEST,
                 ex.getMessage(),

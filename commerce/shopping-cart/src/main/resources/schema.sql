@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS shopping_carts
 (
-    shopping_cart_id UUID PRIMARY KEY,
+    shopping_cart_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     username         VARCHAR(255) NOT NULL,
     state            VARCHAR(255) NOT NULL,
     CONSTRAINT UNIQ_CART_USER UNIQUE (shopping_cart_id, username)

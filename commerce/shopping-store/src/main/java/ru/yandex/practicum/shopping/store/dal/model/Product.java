@@ -36,21 +36,21 @@ public class Product {
     @Column(nullable = false)
     private String productName;
 
-    @Column(nullable = false)
+    @Column
     private String description;
 
     @Column
     private String imageSrc;
 
     @Enumerated(EnumType.STRING)
-    QuantityState quantityState;
+    private QuantityState quantityState;
 
     @Enumerated(EnumType.STRING)
-    ProductState productState;
+    private ProductState productState;
 
     @Enumerated(EnumType.STRING)
-    ProductCategory productCategory;
+    private ProductCategory productCategory;
 
-    @Column(nullable = false, precision = 19, scale = 2)
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 }

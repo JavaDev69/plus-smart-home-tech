@@ -71,6 +71,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return shoppingCart;
     }
 
+    @Transactional
     @Override
     public ShoppingCart changeProductQuantity(String username, ChangeProductQuantityRequest request) {
         ShoppingCart shoppingCart = getOrCreateCart(username);

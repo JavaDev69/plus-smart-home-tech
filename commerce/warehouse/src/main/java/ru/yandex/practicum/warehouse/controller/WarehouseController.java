@@ -3,14 +3,12 @@ package ru.yandex.practicum.warehouse.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import ru.yandex.practicum.shopping.dto.cart.ShoppingCartDto;
 import ru.yandex.practicum.shopping.dto.warehouse.AddProductToWarehouseRequest;
@@ -37,7 +35,6 @@ public class WarehouseController {
     private final WarehouseMapper mapper;
 
     @PutMapping
-    @ResponseStatus(HttpStatus.OK)
     public void addProduct(@Valid @RequestBody NewProductInWarehouseRequest request) {
         log.debug("Adding product description in warehouse request: {}", request);
         service.addProduct(mapper.map(request));
@@ -51,7 +48,6 @@ public class WarehouseController {
     }
 
     @PostMapping("/add")
-    @ResponseStatus(HttpStatus.OK)
     public void add(@Valid @RequestBody AddProductToWarehouseRequest request) {
         log.debug("Adding product quantity in warehouse request: {}", request);
         service.add(request);
